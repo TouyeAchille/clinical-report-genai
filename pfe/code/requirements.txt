@@ -1,0 +1,15 @@
+# Version de vLLM figée sur celle de vos logs Colab. Après installation, figer le reste :
+#   pip freeze > requirements.lock.txt   (à versionner avec chaque run)
+vllm==0.33.0
+langchain-openai
+langchain-core
+datasets
+transformers
+pydantic>=2
+pyyaml
+pandas
+numpy
+matplotlib
+tabulate
+rapidfuzz
+requests
