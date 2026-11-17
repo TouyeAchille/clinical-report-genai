@@ -1,0 +1,7 @@
+{
+  "run_name": "test_3patients",
+  "n_patients": 3,
+  "pct_json_valide": 0.0,
+  "pct_sortie_invalide": 66.7,
+  "pct_depassement_contexte": 33.3
+}
