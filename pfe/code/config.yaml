@@ -1,0 +1,59 @@
+# Configuration commune aux étapes 1 à 3. Aucun paramètre en dur dans le code.
+seed: 42
+
+paths:
+  # Sur Google Drive pour survivre aux déconnexions Colab.
+  output_dir: /content/drive/MyDrive/pfe/outputs
+
+data:
+  dataset: HealthDataHub/PARHAF
+  split: train
+
+model:
+  name: BioMistral/BioMistral-7B-AWQ-QGS128-W4-GEMM
+  tokenizer: BioMistral/BioMistral-7B-AWQ-QGS128-W4-GEMM
+  base_url: http://localhost:8000/v1
+  max_model_len: 2048            # maximum de BioMistral (fiche Hugging Face)
+
+# ---------------------------------------------------------------- Étape 1
+step1:
+  # Tokens réservés à la sortie : on teste deux hypothèses.
+  output_reserve_tokens: [256, 512]
+
+# ---------------------------------------------------------------- Étape 2
+step2:
+  run_name: test_40patients_v1      # même seed -> mêmes 3 patients : comparaison avant/après
+  doc_types: [CRH]
+  n_patients: 40                   # repasser à 40 une fois le test validé
+  temperature: 0.0
+  max_tokens: 512
+  repetition_penalty: 1.1         # 1.0 = désactivé ; hyperparamètre à documenter
+  similarity_threshold: 0.70     # en dessous : cas signalé pour relecture
+  # Pas de message system : le gabarit Mistral v0.1 ne l'accepte pas (à vérifier).
+  prompt: |
+    Tu es un assistant de rédaction médicale. À partir des documents ci-dessous, produis un résumé du séjour au format JSON.
+    Règles :
+    - Utilise uniquement les informations présentes dans les documents. Si une information est absente, mets null ou une liste vide.
+    - Codes : recopie un code CIM-10 ou CCAM seulement s'il est écrit dans le texte, sinon null. N'invente aucun code.
+    - Chaque élément de liste apparaît une seule fois.
+    - "synthese" : 3 à 5 phrases rédigées avec tes mots. Ne recopie pas le compte rendu.
+
+    {documents}
+
+# ---------------------------------------------------------------- Étape 3
+step3:
+  doc_types: [CRH]
+  n_patients: 30
+  max_input_tokens: 1300         # 1300 + 700 en sortie <= 2048
+  temperature: 0.0
+  max_tokens: 700
+  repetition_penalty: 1.1
+  gold_dir_name: step3_gold      # un fichier JSON par patient, corrigé à la main
+  prompt: |
+    Tu es un assistant d'extraction d'informations médicales. Extrais du compte rendu ci-dessous les informations demandées au format JSON.
+    Règles :
+    - Reprends les termes et les valeurs tels qu'ils sont écrits (valeurs, unités, posologies).
+    - N'ajoute aucune information absente du texte. Si une rubrique est absente, mets null ou une liste vide.
+    - Un élément de liste par fait, formulé brièvement. Chaque fait apparaît une seule fois.
+
+    {documents}

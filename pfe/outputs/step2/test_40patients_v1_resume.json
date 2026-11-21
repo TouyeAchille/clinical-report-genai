@@ -1,0 +1,23 @@
+{
+  "run_name": "test_40patients_v1",
+  "n_patients": 40,
+  "pct_json_valide": 50.0,
+  "pct_sortie_invalide": 12.5,
+  "pct_depassement_contexte": 37.5,
+  "diag_code_exact_pct": 5.0,
+  "diag_code_3car_pct": 20.0,
+  "diag_sim_moyenne": 0.477,
+  "acte_code_exact_pct": 0.0,
+  "acte_sim_moyenne": 0.392,
+  "entree_sim_moyenne": 0.25,
+  "sortie_sim_moyenne": 0.282,
+  "duree_exacte_pct": 38.9,
+  "duree_plus_moins_1_pct": 88.9,
+  "pct_nombres_non_sources": 11.8,
+  "pct_codes_non_sources": 100.0,
+  "latence_moyenne_s": 27.17,
+  "latence_p90_s": 31.62,
+  "tokens_entree_moyen": 987.5,
+  "tokens_sortie_moyen": 408.0,
+  "n_a_relire": 20
+}

@@ -1,0 +1,3 @@
+patient_id,specialty,diag_code_exact,diag_code_3car,diag_sim,acte_code_exact,acte_code_3car,acte_sim,entree_sim,sortie_sim,duree_exacte,duree_plus_moins_1,n_nombres,n_nombres_non_sources,nombres_non_sources,n_codes,n_codes_non_sources,codes_non_sources,latence_s,tokens_entree,tokens_sortie,a_relire
+CHIR-ORTHO-ET-TRAUMATO-00073,CHIR ORTHO ET TRAUMATO,False,False,0.44230769230769235,False,False,0.3603603603603604,,,False,False,7,2,"1, 60",2,2,"L697, Z030",35.404,583,456,True
+NEUROLOGIE-00224,NEUROLOGIE,False,False,0.29565217391304344,,,,,,False,True,5,0,,3,3,"G90, G900, Z01",28.901,1471,415,True

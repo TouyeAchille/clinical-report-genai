@@ -1,0 +1,23 @@
+{
+  "run_name": "test_mlflow_v1",
+  "n_patients": 3,
+  "pct_json_valide": 66.7,
+  "pct_sortie_invalide": 0.0,
+  "pct_depassement_contexte": 33.3,
+  "diag_code_exact_pct": 0.0,
+  "diag_code_3car_pct": 0.0,
+  "diag_sim_moyenne": 0.369,
+  "acte_code_exact_pct": 0.0,
+  "acte_sim_moyenne": 0.36,
+  "entree_sim_moyenne": null,
+  "sortie_sim_moyenne": null,
+  "duree_exacte_pct": 0.0,
+  "duree_plus_moins_1_pct": 50.0,
+  "pct_nombres_non_sources": 16.7,
+  "pct_codes_non_sources": 100.0,
+  "latence_moyenne_s": 31.59,
+  "latence_p90_s": 34.72,
+  "tokens_entree_moyen": 1027.0,
+  "tokens_sortie_moyen": 435.5,
+  "n_a_relire": 2
+}
